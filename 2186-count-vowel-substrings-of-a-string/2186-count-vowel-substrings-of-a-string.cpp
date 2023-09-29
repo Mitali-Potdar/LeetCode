@@ -31,6 +31,26 @@ public:
         return res;
     }
     int countVowelSubstrings(string str) {
-        return atMostK(str, 5) - atMostK(str, 4);
+        //return atMostK(str, 5) - atMostK(str, 4);
+        int n = str.size();
+        int count = 0;
+        
+        for(int i = 0; i < n; i++){
+            unordered_set<char> s;
+            
+            for(int j = i; j < n; j++){
+                if(isVowel(str[j])){
+                    s.insert(str[j]);
+                }
+                else
+                    break;
+                
+                if(s.size() == 5){
+                    count++;
+                }
+            }
+        }
+        
+        return count;
     }
 };

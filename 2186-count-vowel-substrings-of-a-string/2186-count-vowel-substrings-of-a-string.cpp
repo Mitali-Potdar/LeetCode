@@ -27,17 +27,39 @@ public:
         }
         return cnt;
     }
-    int countVowelSubstrings(string str) {
-        int n = str.size();
-        int count = 0;
-        for(int i = 0; i < n; i++){
-            if(isVowel(str[i])){
-                int j = i+1;
-                while(j < n && isVowel(str[j])) j++;
-                count += solve(str, i, j-1); //solving for entire block of all vowels
-                i = j;
-            }
+    int atMost(string s, int k){
+        if( k < 0) return 0;
+        unordered_map<char, int> m;
+        int l = 0;
+        int cnt = 0;
+        for(int r = 0; r < s.size(); r++){
+            if(isVowel(s[r])){
+                m[s[r]]++;
+                while(m.size() > k){
+                    m[s[l]]--;
+                    if(m[s[l]] == 0) m.erase(s[l]);
+                    l++;
+                }
+                cnt += r-l+1;
+            } else {
+                l = r+1;
+                m.clear();
+            }    
         }
+        return cnt;
+    }
+    int countVowelSubstrings(string str) {
+        return atMost(str, 5) - atMost(str, 4);
+        // int n = str.size();
+        // int count = 0;
+        // for(int i = 0; i < n; i++){
+        //     if(isVowel(str[i])){
+        //         int j = i+1;
+        //         while(j < n && isVowel(str[j])) j++;
+        //         count += solve(str, i, j-1); //solving for entire block of all vowels
+        //         i = j;
+        //     }
+        // }
         // for(int i = 0; i < n; i++){
         //     unordered_set<char> s;
             
@@ -53,7 +75,7 @@ public:
         //         }
         //     }
         // }
-        return count;
+        //return count;
     }
 };
 

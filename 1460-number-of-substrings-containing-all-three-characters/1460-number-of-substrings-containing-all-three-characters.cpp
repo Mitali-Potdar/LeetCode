@@ -2,7 +2,7 @@ class Solution {
 public:
     int atMost(string nums, int k){
         if( k < 0) return 0;
-        unordered_map<int, int> m;
+        unordered_map<char, int> m;
         int l = 0;
         int cnt = 0;
         for(int r = 0; r < nums.size(); r++){

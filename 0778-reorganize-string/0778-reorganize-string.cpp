@@ -9,7 +9,7 @@ public:
             mp[s]++;
         
         for(auto m: mp)
-            pq.push(make_pair(m.second,m.first));
+            pq.push({m.second,m.first});
         
         while(pq.size()>1){
             auto top1= pq.top();

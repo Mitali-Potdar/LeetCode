@@ -9,6 +9,7 @@ public:
         }
         if(x > total) return -1;
         int target = total - x;
+        if (target == 0) return n;
         int len = INT_MIN;
         int sum = 0;
         while(r < n){

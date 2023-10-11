@@ -6,12 +6,12 @@ public:
         vector<int> res;
 
         for(int i = 0; i < n; i++){
-            while(!id.empty() && nums[i]>=nums[id.back()]) 
+            while(!id.empty() && nums[i] >= nums[id.back()]) 
                 id.pop_back();// pop back the indexes for smaller ones
 
             id.push_back(i);  // push back the index for larger one
 
-            if (id.front()==i-k) // index=i-k should not in the window
+            if (id.front() == i-k) // index=i-k should not in the window
                 id.pop_front(); 
 
             if (i >= k-1)

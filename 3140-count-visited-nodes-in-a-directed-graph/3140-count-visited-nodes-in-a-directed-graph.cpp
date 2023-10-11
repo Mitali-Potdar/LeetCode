@@ -31,13 +31,17 @@ public:
         for(int i = 0; i < n; i++){
             if(vis[i] == 0){ //part of cycle
                 int length = 0;
-                for (int x = i; !vis[x]; x = edges[x]) {
-                    vis[x] = 1;
+                int x = i;
+                while(!vis[i]){
+                    vis[edges[x]] = 1;
                     length++;
+                    x = edges[x];
                 }
                 res[i] = length;
-                for(int x = edges[i]; x != i; x = edges[x]) {
+                x = edges[i];
+                while(x != i){
                     res[x] = length;
+                    x = edges[x];
                 }
             }
         }

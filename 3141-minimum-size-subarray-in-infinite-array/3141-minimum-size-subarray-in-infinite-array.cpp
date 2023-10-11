@@ -8,17 +8,14 @@ public:
         for(int i = 0; i < n; i++){
             v[i] = nums[i];
             v[n+i] = nums[i];
-            v[2*n+i] = nums[i];
             lsum += nums[i];
         }
         int N = 2*n;
-        if(target > lsum){
+        if(target >= lsum){
             int m = target/lsum; 
-            if(m > 0){
-                res = (m-1)*n;
-                target -= (m-1)*lsum;
-                N = 3*n;
-            }
+            res = m*n;
+            target = target%lsum;
+            if(target == 0) return res;
         }
         int l = 0;
         int r = 0;
@@ -30,11 +27,7 @@ public:
                 sum -= v[l];
                 l++;
             } 
-            if(sum == target){
-                len = min(len , r-l+1);
-                sum -= v[l];
-                l++;
-            }
+            if(sum == target) len = min(len , r-l+1);
             r++;
         }
         if(len == INT_MAX)return -1;

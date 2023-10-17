@@ -29,8 +29,9 @@ public:
             }
             
             curr = next;
+            
             if(next)
-                next = curr->next;
+                next = curr->next; //IMP
         }
         return head;
     }

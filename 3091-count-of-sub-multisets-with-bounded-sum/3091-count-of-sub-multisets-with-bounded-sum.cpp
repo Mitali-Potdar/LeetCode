@@ -33,7 +33,7 @@ public:
                 int freq = m[nums[i-1]];
                 long long sum = 0;
                 if((freq + 1) * nums[i-1] <= j){
-                    sum = (t[i-1][j] + t[i][j-nums[i-1]] - t[i-1][j - (freq+1)*nums[i-1]] + MOD)%MOD;
+                    sum = (t[i-1][j] + t[i][j-nums[i-1]] - t[i-1][j - (freq+1)*nums[i-1]] + MOD);
                 }
                 else if(nums[i-1] <= j){
                     sum = t[i-1][j] + t[i][j-nums[i-1]];

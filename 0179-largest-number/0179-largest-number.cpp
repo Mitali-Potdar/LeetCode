@@ -1,10 +1,14 @@
 class Solution {
 public:
+    static bool helper(string &s1, string &s2){
+        return s1+s2 > s2+s1;
+    }
     string largestNumber(vector<int>& nums) {
         vector<string> arr;
         for(auto i: nums)
             arr.push_back(to_string(i));
-        sort(begin(arr), end(arr), [](string &s1, string &s2){ return s1+s2 > s2+s1; });
+
+        sort(begin(arr), end(arr), helper);
 
         string res;
         for(auto s:arr)

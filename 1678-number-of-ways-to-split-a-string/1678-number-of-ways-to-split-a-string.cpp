@@ -9,37 +9,19 @@ public:
         }
         if(cnt % 3 != 0) return 0;
         if(cnt == 0){
-            int x = n-1;
-            long long res = 0;
-            for(long long i = 1; i < x; i++){
-                res += i;
-            }
-            res = res % MOD;
-            return res;
+            long long res = (long long)(n-1)*(n-2);
+            res = res/2;
+            return res%MOD;
         }
         else{
-            int x = cnt/3;
             long long z1 = 0, z2 = 0;
-            int i = 0;
             int one = 0;
-            while(one < x){
+            for(int i = 0; i < n; i++){
                 if(s[i] == '1') one++;
-                i++;
-            } 
-            while(s[i] != '1'){
-                z1++;
-                i++;
+                if(one == cnt/3) z1++;
+                if(one == 2*cnt/3) z2++;
             }
-            one = 0;
-            while(one < x){
-                if(s[i] == '1') one++;
-                i++;
-            }
-            while(s[i] != '1'){
-                z2++;
-                i++;
-            }
-            int res = (z1+1)*(z2+1) % MOD;
+            int res = z1*z2 % MOD;
             return res;
         }
         return -1;

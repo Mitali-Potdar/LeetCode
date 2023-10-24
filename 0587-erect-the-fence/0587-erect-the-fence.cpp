@@ -31,9 +31,9 @@ public:
         }
 
         // for Lower Hull
-        for(int j = sz-1; j >= 0; j--) {
+        for(int j = 0; j < sz; j++) {
             int m = lower.size();    
-            while (m >= 2 && slope(lower[m - 2], lower[m-1], trees[j]) < 0) {
+            while (m >= 2 && slope(lower[m - 2], lower[m-1], trees[j]) > 0) {
                 lower.pop_back();
                 m--;
             }

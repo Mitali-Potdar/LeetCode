@@ -10,18 +10,11 @@ public:
     }
     int findTheWinner(int n, int k) {
         //return helper(n, k) + 1; //since we are taking zero indexed
-        queue<int> q;
-        for(int i=1; i<=n; i++) q.push(i);
-        
-        while(q.size() > 1) {
-            int i = k;
-            while(i > 1) {
-                auto f = q.front(); q.pop();
-                q.push(f);
-                i--;
-            }
-            q.pop();
+        vector<int> dp(n+1, 0);
+        dp[0] = 0;
+        for(int i = 1; i < n+1; i++){
+            dp[i] = (dp[i-1] + k) % i;
         }
-        return q.front();
+        return dp[n]+1 ;
     }
 };

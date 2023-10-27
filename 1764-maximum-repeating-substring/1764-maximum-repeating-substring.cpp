@@ -8,7 +8,7 @@ public:
         int i = 0;
         int j = m-1;
         while(j < n){
-            if(seq.substr(i, j-i+1) != word){
+            if(seq.substr(i, m) != word){
                 if(cnt > 0){ //if prev substring was a match, go to the index after prev substring
                     i -= m;
                     j -= m;

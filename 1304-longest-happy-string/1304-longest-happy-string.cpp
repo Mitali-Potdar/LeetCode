@@ -8,7 +8,6 @@ public:
         if(c) pq.push({c,'c'});
 
         string ans="";
-
         while(pq.size() > 1){
             pair<int,char> one = pq.top();
             pq.pop();

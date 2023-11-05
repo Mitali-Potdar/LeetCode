@@ -15,7 +15,8 @@ public:
       if(temp_score > max_score) max_score = temp_score;
     }
     return memo[i][j] = max_score;
-  }
+    }
+    
     int maxCoins(vector<int>& nums) {
       memset(memo, -1, sizeof(memo));
       
